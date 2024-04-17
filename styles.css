@@ -1,53 +1,103 @@
-body {
-    font-family: Arial, sans-serif;
+/* Base Reset for HTML Elements */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Lighter shade for a modern look */
 }
 
+/* Header Styling */
 header {
-    background-color: #333;
+    background-color: #005A9C;
     color: white;
-    padding: 10px 20px;
+    padding: 20px 40px; /* More horizontal padding for better alignment */
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* This spreads out the logo and the nav */
+    position: relative;
 }
 
-header img {
-    height: 50px; /* Control the size of the logo */
-    margin-right: 20px;
+#logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    height: 60px; /* Ensure logo is not too large */
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+main {
+    padding: 20px;
+    padding-bottom: 80px; /* Add padding to compensate for fixed footer */
 }
 
 section {
+    background: white;
+    margin-bottom: 20px;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow */
+}
+
+section h2 {
+    color: #005A9C;
+    cursor: pointer;
+    margin-bottom: 0; /* Remove bottom margin to reduce space */
+}
+
+section h2:hover {
+    color: #003366; /* Darker blue on hover for better interaction */
+}
+
+.content {
+    display: none; /* Initially hidden content */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
     margin-top: 10px;
-    background-color: #f4f4f4;
+}
+
+/* Styling for ordered lists */
+ol {
+    counter-reset: section;
+    list-style-type: none;
+    padding-left: 20px; /* Proper indentation for readability */
+}
+
+ol li::before {
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    font-weight: bold;
+    color: #005A9C; /* Using theme color for consistency */
+}
+
+ol li {
+    margin: 10px 0;
+    padding-left: 20px;
+    border-left: 2px solid #005A9C;
+    position: relative;
+    padding-right: 10px; /* Ensure text does not touch the border */
+}
+
+ol li::before {
+    position: absolute;
+    left: -20px;
+    background-color: #f0f2f5; /* Match the background */
+    width: 20px; /* Ensure consistent alignment */
 }
 
 footer {
-    text-align: center;
-    padding: 10px 0;
     background-color: #333;
     color: white;
+    text-align: center;
+    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Shadow to lift footer visually */
 }
+
+/* Additional styling for the roadmap container */
+#roadmap {
+    height: 180px;
+    border: 1px solid lightgray;
+    margin: 20px 0;
+}
+

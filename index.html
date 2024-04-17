@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Management Roadmap</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-timeline-graph2d.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-timeline-graph2d.min.js"></script>
   </head>
   <body>
     <header>
@@ -13,29 +19,99 @@
         alt="Product Management Roadmap Logo"
         id="logo"
       />
-      <h1>Product Management Roadmap</h1>
+      <h1>Becoming a Great Product Manager</h1>
     </header>
     <main>
-      <section id="product-management">
+      <div id="roadmap" style="height: 180px"></div>
+      <section id="understanding-pm">
         <h2>Understanding Product Management</h2>
-        <!-- Content will go here -->
+        <div class="content">
+          <p>
+            Product Management is an organizational function that guides every
+            step of a product's lifecycle. The role of a Product Manager
+            includes defining the 'why', 'when', and 'what' of the product that
+            the engineering team builds.
+          </p>
+        </div>
       </section>
       <section id="types-of-pm">
         <h2>Types of Product Management</h2>
-        <!-- Content will go here -->
+        <div class="content">
+          <ul>
+            <li>Product Development Management</li>
+            <li>Product Marketing Management</li>
+            <li>Technical Product Management</li>
+            <li>Data Product Management</li>
+          </ul>
+        </div>
       </section>
       <section id="steps-to-become-pm">
         <h2>Steps to Becoming a Great Product Manager</h2>
-        <!-- Content will go here -->
+        <div class="content">
+          <ol>
+            <li>Educational Background</li>
+            <li>Gain Relevant Experience</li>
+            <li>Develop Essential Skills</li>
+            <li>Understand the Tools and Technologies</li>
+            <li>Certification and Continuous Learning</li>
+            <li>Build a Network</li>
+            <li>Gain Mastery Over Time</li>
+          </ol>
+        </div>
       </section>
       <section id="advanced-strategies">
         <h2>Advanced Strategies for Experienced PMs</h2>
-        <!-- Content will go here -->
+        <div class="content">
+          <ul>
+            <li>Market Positioning and Competitive Analysis</li>
+            <li>Customer Development</li>
+            <li>Product Roadmapping</li>
+          </ul>
+        </div>
       </section>
     </main>
     <footer>
       <p>© 2024 Product Management Roadmap. All rights reserved.</p>
     </footer>
     <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var container = document.getElementById("roadmap");
+        var items = new vis.DataSet([
+          {
+            id: 1,
+            content: "Understanding Product Management",
+            start: "2024-01-01",
+          },
+          {
+            id: 2,
+            content: "Types of Product Management",
+            start: "2024-02-01",
+          },
+          { id: 3, content: "Steps to Becoming a PM", start: "2024-03-01" },
+          { id: 4, content: "Advanced Strategies", start: "2024-04-01" },
+        ]);
+
+        var options = {
+          start: "2024-01-01",
+          end: "2024-05-01",
+          stack: false,
+          showCurrentTime: true,
+          zoomMin: 1000000000,
+        };
+
+        var timeline = new vis.Timeline(container, items, options);
+
+        // Toggling visibility for sections on click
+        const headers = document.querySelectorAll("main section h2");
+        headers.forEach((header) => {
+          header.addEventListener("click", () => {
+            const content = header.nextElementSibling;
+            content.style.display =
+              content.style.display === "none" ? "block" : "none";
+          });
+        });
+      });
+    </script>
   </body>
 </html>
